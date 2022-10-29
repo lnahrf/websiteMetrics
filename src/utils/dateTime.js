@@ -1,6 +1,7 @@
-import { format } from 'date-fns'
+import { format, parse, parseISO } from 'date-fns'
 
-export const formatDateTime = timestamp => format(new Date(timestamp), 'dd LLL yyyy, hh:mm')
+// Using parseISO to fix Safari's invalid time range bug with date-fns
+export const formatDateTime = timestamp => format(parseISO(timestamp), 'dd LLL yyyy, hh:mm')
 
 export const sortByDateTime = data =>
     data.sort((a, b) => {
