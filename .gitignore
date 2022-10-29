@@ -10,3 +10,6 @@
 
 # production
 /build
+
+#firebase
+.firebase
