@@ -15,10 +15,17 @@ export default function Header() {
     const formatNumber = useCallback(number => new Intl.NumberFormat('en-EN').format(number), [])
 
     const total = useMemo(() => {
-        const impressions = data.reduce((previous, current) => previous + current.impressions, 0)
-        const clicks = data.reduce((previous, current) => previous + current.clicks, 0)
-        const cost = data.reduce((previous, current) => previous + current.cost, 0)
-        const conversions = data.reduce((previous, current) => previous + current.conversions, 0)
+        let impressions = 0
+        let clicks = 0
+        let cost = 0
+        let conversions = 0
+
+        for (const item of data) {
+            impressions += item.impressions
+            clicks += item.clicks
+            cost += item.cost
+            conversions += item.conversions
+        }
 
         return {
             impressions: formatNumber(impressions),
